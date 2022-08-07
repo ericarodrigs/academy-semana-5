@@ -12,7 +12,7 @@ class ETextH6 extends StatelessWidget {
     return Text(
       textH6,
       maxLines: 7,
-      textAlign: TextAlign.justify,
+      textAlign: TextAlign.start,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(fontWeight: fontWeight, fontSize: 16),
     );

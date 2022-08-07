@@ -1,3 +1,4 @@
+import 'package:exercicio_semana_5/src/design_system/atoms/e_text_h6.dart';
 import 'package:flutter/material.dart';
 import '../model/matches_info_model.dart';
 
@@ -13,96 +14,33 @@ class MatchesInfoWidget extends StatefulWidget {
 class _MatchesInfoWidgetState extends State<MatchesInfoWidget> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 16),
-      child: Card(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('${widget.match.championship}'),
-                Text('${widget.match.matchTime}'),
-              ],
-            ),
-            Text('${widget.match.match}'),
-            Text('${widget.match.scoreBoard}'),
-          ],
-        ),
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ETextH6(
+                textH6: '${widget.match.championship}',
+                fontWeight: FontWeight.w400,
+              ),
+              ETextH6(
+                textH6: '${widget.match.matchTime}',
+                fontWeight: FontWeight.w400,
+              ),
+            ],
+          ),
+          ETextH6(
+            textH6: '${widget.match.match}',
+            fontWeight: FontWeight.w400,
+          ),
+          ETextH6(
+            textH6: '${widget.match.scoreBoard}',
+            fontWeight: FontWeight.w400,
+          ),
+        ],
       ),
     );
   }
 }
-
-// Row
-// (
-// children: [
-// Expanded
-// (
-// child: ClipOval
-// (
-// child: Image.network(widget.user.urlImage ?? "
-// "
-// ,
-// fit: BoxFit.cover,)
-// ,
-// )
-// ,
-// )
-// ,
-// const SizedBox(width: 10
-// )
-// ,
-// Expanded
-// (
-// flex: 3
-// ,
-// child: SizedBox
-// (
-// child: Column
-// (
-// crossAxisAlignment: CrossAxisAlignment.start,children: [
-// Text
-// ('Name :
-// ${
-// widget.user.name ?? "
-// "
-// }
-// '
-// ,
-// style: const TextStyle(fontSize: 16
-// ,
-// fontWeight: FontWeight.w600),
-// )
-// ,
-// Text
-// ('Username :
-// ${
-// widget.user.userNameGithub ?? "
-// "
-// }
-// '
-// ,
-// style: const TextStyle(fontSize: 16
-// ,
-// fontWeight: FontWeight.w600),
-// )
-// ,
-// Text
-// ('Skills :
-// ${
-// widget.user.skills ?? "
-// "
-// }
-// '
-// ,
-// style: const TextStyle(fontSize: 16
-// ,
-// fontWeight: FontWeight.w600),),
-// ],
-// ),
-// ),
-// ),
-// ]
-// ,
-// )

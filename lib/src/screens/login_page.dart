@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           color: const Color(0xFF1E232C),
                           text: 'Login'),
-                    )
+                    ),
                   ],
                 ),
               ),

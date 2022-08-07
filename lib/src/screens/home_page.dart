@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     _homeNotifier.listenEvents();
-    _homeNotifier.eventNotifier.changeEvent(HomeEventBuscar());
+    _homeNotifier.eventNotifier.changeEvent(HomeEventSearch());
     super.initState();
   }
 
@@ -34,15 +34,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Jogos'),
-        actions: [
-          InkWell(
-            onTap: () {
-              _homeNotifier.eventNotifier
-                  .changeEvent(HomeEventAlterarUsuarios());
-            },
-            child: const Icon(Icons.refresh),
-          ),
-        ],
       ),
       body: AnimatedBuilder(
         animation: _homeNotifier.stateNotifier,
@@ -57,10 +48,10 @@ class _HomePageState extends State<HomePage> {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: _homeNotifier.listUsers.length,
+                      itemCount: _homeNotifier.listMatches.length,
                       itemBuilder: (BuildContext context, int index) {
                         return MatchesInfoWidget(
-                            match: _homeNotifier.listUsers[index]);
+                            match: _homeNotifier.listMatches[index]);
                       },
                     )
                   ],
@@ -68,7 +59,6 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }
-
           return const Center(child: CircularProgressIndicator());
         },
       ),

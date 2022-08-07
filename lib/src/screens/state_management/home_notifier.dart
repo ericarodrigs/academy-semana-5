@@ -5,11 +5,10 @@ import 'home_event_notifier.dart';
 import 'home_state.dart';
 import 'home_state_notifier.dart';
 
-
 class HomeNotifier extends ChangeNotifier {
   HomeNotifier();
 
-  List<MatchesInfoModel> listUsers = [];
+  List<MatchesInfoModel> listMatches = [];
 
   HomeStateNotifier stateNotifier = HomeStateNotifier.instance;
   HomeEventNotifier eventNotifier = HomeEventNotifier.instance;
@@ -17,64 +16,49 @@ class HomeNotifier extends ChangeNotifier {
   void listenEvents() {
     eventNotifier.addListener(
           () {
-        if(eventNotifier.event is HomeEventBuscar){
-          _getUsers();
-        } else if(eventNotifier.event is HomeEventAlterarUsuarios){
-          _getNewUsers();
+        if (eventNotifier.event is HomeEventSearch) {
+          _getMatches();
         }
       },
     );
   }
 
-  void _getUsers() async {
-
+  void _getMatches() async {
     stateNotifier.changeState(HomeStateLoading());
 
     await Future.delayed(const Duration(seconds: 2));
 
-    // Simulando resposta de uma API em um cenario real
-
     final response = [
       {
-        "championship": "Inicial Champions League Group B",
-        "match": "Liverpol x Real Madrid",
+        "championship": "Champions League Group B",
+        "match": "Liverpool x Real Madrid",
         "matchTime": "08:00 - 09:30",
-        "scoreBoard": "0 x 0"
+        "scoreBoard": "2 x 0"
+      },
+      {
+        "championship": "Champions League Group B",
+        "match": "Barcelona x Manchester United",
+        "matchTime": "09:30 - 11:00",
+        "scoreBoard": "1 x 2"
+      },
+      {
+        "championship": "Champions League Group B",
+        "match": "PSG x Chelsea",
+        "matchTime": "08:00 - 09:30",
+        "scoreBoard": "3 x 1"
+      },
+      {
+        "championship": "Champions League Group B",
+        "match": "Manchester City x Juventus",
+        "matchTime": "09:30 - 11:00",
+        "scoreBoard": "2 x 0"
       },
     ];
 
-    for (var user in response) {
-      listUsers.add(MatchesInfoModel.fromJson(user));
+    for (var championship in response) {
+      listMatches.add(MatchesInfoModel.fromJson(championship));
     }
 
-    // adicionar classe para realizar a gerencia de estado do STATE NOTIFIER
-    stateNotifier.changeState(HomeStateSuccess());
-  }
-
-  void _getNewUsers() async {
-
-    listUsers.clear();
-
-    stateNotifier.changeState(HomeStateLoading());
-
-    await Future.delayed(const Duration(seconds: 2));
-
-    // Simulando resposta de uma API em um cenario real
-
-    final response = [
-      {
-        "championship": "Atualizado Champions League Group B",
-        "match": "Liverpol x Real Madrid",
-        "matchTime": "08:00 - 09:30",
-        "scoreBoard": "0 x 0"
-      },
-    ];
-
-    for (var user in response) {
-      listUsers.add(MatchesInfoModel.fromJson(user));
-    }
-
-    // adicionar classe para realizar a gerencia de estado do STATE NOTIFIER
     stateNotifier.changeState(HomeStateSuccess());
   }
 }
