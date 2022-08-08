@@ -33,7 +33,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Jogos'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0XFFF7F8F9),
+        title: const Text(
+          'Jogos',
+          style: TextStyle(
+            color: Color(0XFF1E232C),
+            fontSize: 26,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
       body: AnimatedBuilder(
         animation: _homeNotifier.stateNotifier,

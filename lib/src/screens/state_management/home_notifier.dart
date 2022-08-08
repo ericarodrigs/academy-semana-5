@@ -55,8 +55,8 @@ class HomeNotifier extends ChangeNotifier {
       },
     ];
 
-    for (var championship in response) {
-      listMatches.add(MatchesInfoModel.fromJson(championship));
+    for (var match in response) {
+      listMatches.add(MatchesInfoModel.fromJson(match));
     }
 
     stateNotifier.changeState(HomeStateSuccess());
