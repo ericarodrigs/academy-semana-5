@@ -32,13 +32,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0XFFFFFFFF),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: const Color(0XFFF7F8F9),
+        backgroundColor: const Color(0XFFFFFFFF),
+        elevation: 0,
         title: const Text(
           'Jogos',
           style: TextStyle(
             color: Color(0XFF1E232C),
+            fontFamily: 'Urbanist',
             fontSize: 26,
             fontWeight: FontWeight.w700,
           ),
@@ -49,8 +52,8 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context, Widget? child) {
           if (_homeNotifier.stateNotifier.state is HomeStateSuccess) {
             return SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
+              child: Container(
+                margin: const EdgeInsets.only(top: 40, left: 16, right: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

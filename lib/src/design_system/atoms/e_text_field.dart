@@ -32,19 +32,26 @@ class ETextField extends StatelessWidget {
         obscureText: obscureText ?? false,
         cursorColor: Colors.black,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.only(left: 19, bottom: 19, top: 19),
+          fillColor: const Color(0xffF7F8F9),
+          filled: true,
           labelText: labelText,
-          labelStyle: const TextStyle(color: Colors.black),
+          labelStyle: const TextStyle(
+              color: Color(0xff8391A1),
+              fontSize: 15,
+              fontFamily: 'Urbanist',
+              fontWeight: FontWeight.w500),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.black, width: 1),
+            borderSide: const BorderSide(color: Color(0xffDADADA), width: 1),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.black, width: 1),
+            borderSide: const BorderSide(color: Color(0xffDADADA), width: 1),
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.grey, width: 1),
+            borderSide: const BorderSide(color: Color(0xffDADADA), width: 1),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),

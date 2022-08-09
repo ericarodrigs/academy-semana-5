@@ -4,7 +4,8 @@ class MatchesInfoModel {
   String? matchTime;
   String? scoreBoard;
 
-  MatchesInfoModel({this.championship, this.match, this.matchTime, this.scoreBoard});
+  MatchesInfoModel(
+      {this.championship, this.match, this.matchTime, this.scoreBoard});
 
   MatchesInfoModel.fromJson(Map<String, dynamic> json) {
     championship = json['championship'];

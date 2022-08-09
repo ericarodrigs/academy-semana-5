@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../model/matches_info_model.dart';
-import 'home_event.dart';
 import 'home_event_notifier.dart';
 import 'home_state.dart';
 import 'home_state_notifier.dart';
@@ -15,10 +14,8 @@ class HomeNotifier extends ChangeNotifier {
 
   void listenEvents() {
     eventNotifier.addListener(
-          () {
-        if (eventNotifier.event is HomeEventSearch) {
-          _getMatches();
-        }
+      () {
+        _getMatches();
       },
     );
   }
@@ -55,9 +52,9 @@ class HomeNotifier extends ChangeNotifier {
       },
     ];
 
-    for (var match in response) {
-      listMatches.add(MatchesInfoModel.fromJson(match));
-    }
+    listMatches.clear();
+
+    listMatches = response.map((match) => MatchesInfoModel.fromJson(match)).toList();
 
     stateNotifier.changeState(HomeStateSuccess());
   }
